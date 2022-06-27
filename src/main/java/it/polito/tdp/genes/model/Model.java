@@ -48,10 +48,10 @@ public class Model {
 		return this.dao.getLocalization();
 	}
 	
-	public List<Adiacenti> getAdiacenti(String l){
-		List<Adiacenti> result = new LinkedList<Adiacenti>();
+	public List<Arco> getAdiacenti(String l){
+		List<Arco> result = new LinkedList<Arco>();
 		for(String localization : Graphs.neighborListOf(this.graph, l)) {
-			result.add(new Adiacenti(localization, this.graph.getEdgeWeight(this.graph.getEdge(l, localization))));
+			result.add(new Arco(l, localization, this.graph.getEdgeWeight(this.graph.getEdge(l, localization))));
 		}
 		
 		return result;

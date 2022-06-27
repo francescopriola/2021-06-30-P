@@ -63,7 +63,7 @@ public class GenesDao {
 	public List<Arco> getArchi(){
 		String sql = "SELECT DISTINCT c1.`Localization` as l1, c2.`Localization` as l2, COUNT(DISTINCT i.`Type`) as peso "
 				+ "FROM classification c1, classification c2, interactions i "
-				+ "WHERE i.`GeneID1` <> i.`GeneID2` AND c1.`GeneID` = i.`GeneID1` AND c2.`GeneID` = i.`GeneID2`  "
+				+ "WHERE c1.`GeneID` = i.`GeneID1` AND c2.`GeneID` = i.`GeneID2`  "
 				+ "AND c1.`Localization` <> c2.`Localization` "
 				+ "GROUP BY c1.`Localization`, c2.`Localization`";
 		List<Arco> result = new ArrayList<Arco>();

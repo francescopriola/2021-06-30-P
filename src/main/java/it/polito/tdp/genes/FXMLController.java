@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import it.polito.tdp.genes.model.Adiacenti;
+import it.polito.tdp.genes.model.Arco;
 import it.polito.tdp.genes.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,8 +66,8 @@ public class FXMLController {
     	}
     	
     	this.txtResult.appendText("Adiacenti a: " + l + "\n");
-    	for(Adiacenti a : this.model.getAdiacenti(l)) {
-    		txtResult.appendText(a.getLocalization() + "     " + a.getPeso() + "\n");
+    	for(Arco a : this.model.getAdiacenti(l)) {
+    		txtResult.appendText(a.getL2() + "     " + a.getPeso() + "\n");
     	}
 
     }
