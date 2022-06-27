@@ -1,8 +1,11 @@
 package it.polito.tdp.genes;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.genes.model.Adiacenti;
 import it.polito.tdp.genes.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,11 +37,38 @@ public class FXMLController {
 
     @FXML
     void doRicerca(ActionEvent event) {
+    	this.txtResult.clear();
+    	
+    	String l = this.boxLocalizzazione.getValue();
+    	
+    	if(l== null) {
+    		this.txtResult.appendText("Seleziona una localizzazione valida!\n");
+    		return;
+    	}
+    	
+    	List<String> result = new ArrayList<String>(this.model.calcolaPercorso(l));
+    	
+    	for(String loc : result) {
+    		this.txtResult.appendText(loc + "\n");
+    	}
 
     }
 
     @FXML
     void doStatistiche(ActionEvent event) {
+    	this.txtResult.clear();
+    	
+    	String l = this.boxLocalizzazione.getValue();
+    	
+    	if(l== null) {
+    		this.txtResult.appendText("Seleziona una localizzazione valida!\n");
+    		return;
+    	}
+    	
+    	this.txtResult.appendText("Adiacenti a: " + l + "\n");
+    	for(Adiacenti a : this.model.getAdiacenti(l)) {
+    		txtResult.appendText(a.getLocalization() + "     " + a.getPeso() + "\n");
+    	}
 
     }
 
